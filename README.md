@@ -1,193 +1,90 @@
 # The Unreasonable Effectiveness of HTML
 
-A curated collection of 21 reusable UI patterns, components, and documentation templates. Each skill demonstrates a complete, production-ready pattern with working examples, gotchas, and best practices.
+21 reusable UI patterns from Thariq Shihireen's "[HTML Effectiveness](https://x.com/trq212/status/2052809885763747935?s=20)", organized as **Agent Skills** for AI agent auto-discovery (Claude Code, Cursor, GitHub Copilot, etc).
 
-## Quick Start
+## The Idea
 
-### For Agents/Tools
+**Thariq's work:** Real, shipping HTML patterns + article on why HTML > Markdown for Claude Code (richer visuals, interactive, shareable, joyful).  
+See: https://thariqs.github.io/html-effectiveness/
 
-Skills are organized in `.claude/SKILL/HTML-EFFECTIVENESS/` following the [Agent Skills spec](https://agentskills.io/):
+**This project:** Agent Skills wrapper for auto-discovery. Agents can now ask "Build me a feature flag editor" instead of searching GitHub.
 
-1. **Discover skills** → Read `.claude/SKILL/HTML-EFFECTIVENESS/index.md` (51 lines)
-2. **Load skill details** → Read individual `SKILL.md` files (~50-60 lines each)
-3. **See working example** → View `resources/{skillname}.html` (full interactive example)
+## Installation
 
-**Progressive disclosure:** Agents load metadata first, then skill instructions, then examples on demand.
+### For AI Agents (Claude Code, Cursor, GitHub Copilot, etc.)
 
-### For Humans
+**Option 1: Project-level (recommended)**
+```bash
+cd your-project
+mkdir -p .agents/skills
+cp -r path/to/html-effectiveness/HTML-EFFECTIVENESS .agents/skills/
+```
+
+**Option 2: User-level (all your projects)**
+```bash
+mkdir -p ~/.agents/skills
+cp -r path/to/html-effectiveness/HTML-EFFECTIVENESS ~/.agents/skills/
+
+# Or for Claude specifically
+mkdir -p ~/.claude/skills
+cp -r path/to/html-effectiveness/HTML-EFFECTIVENESS ~/.claude/skills/
+```
+
+### Using with Claude Code
+
+1. Place skills in `.agents/skills/HTML-EFFECTIVENESS/` or `~/.agents/skills/HTML-EFFECTIVENESS/`
+2. Open Claude Code and select **Agent** mode
+3. Type `/skills` to list all available skills
+4. Ask naturally: "Show me a drag-to-reorder interaction" or "Build a status report template"
+5. Agent automatically loads relevant skill
+
+### Browsing Skills Locally
 
 ```bash
-# Clone the repo
-git clone https://github.com/farhanrhine/html-effectiveness.git
-cd html-effectiveness
-
-# View index
+# View the master index
 cat .claude/SKILL/HTML-EFFECTIVENESS/index.md
 
-# Open any skill in browser
-open .claude/SKILL/HTML-EFFECTIVENESS/01-exploration-code-approaches/resources/01-exploration-code-approaches.html
+# Open any example in your browser
+open .claude/SKILL/HTML-EFFECTIVENESS/07-prototype-animation/resources/07-prototype-animation.html
+
+# Or on Windows
+start .claude\SKILL\HTML-EFFECTIVENESS\07-prototype-animation\resources\07-prototype-animation.html
 ```
 
-## Using with Claude Code & Agents
+## Skills (21 Total)
 
-### 1. Add skills to your project
+**Code & Architecture:** 01-exploration-code-approaches · 03-code-review-pr · 04-code-understanding
 
-Copy the `HTML-EFFECTIVENESS` folder to one of these locations:
+**Design:** 05-design-system · 06-component-variants · 10-svg-illustrations
 
-**For Claude Code (project-level):**
-```bash
-# Option A: Client-specific location
-cp -r HTML-EFFECTIVENESS ~/.claude/skills/
+**Interactions:** 07-prototype-animation · 08-prototype-interaction · 09-slide-deck
 
-# Option B: Cross-client convention (recommended)
-mkdir -p .agents/skills
-cp -r HTML-EFFECTIVENESS .agents/skills/
-```
+**Docs & Communication:** 11-status-report · 12-incident-report · 16-implementation-plan · 17-pr-writeup
 
-**For any agent (user-level):**
-```bash
-# Cross-client (recommended)
-cp -r HTML-EFFECTIVENESS ~/.agents/skills/
+**Research:** 14-research-feature-explainer · 15-research-concept-explainer
 
-# Or Claude-specific
-cp -r HTML-EFFECTIVENESS ~/.claude/skills/
-```
+**Tools:** 13-flowchart-diagram · 18-editor-triage-board · 19-editor-feature-flags · 20-editor-prompt-tuner
 
-### 2. Agents auto-discover skills
+**Portfolio:** index
 
-Once skills are placed in `.agents/skills/` or `.claude/skills/`, agents automatically discover them at startup:
+## How Skills Work
 
-**Discovery structure:**
-```
-.agents/skills/HTML-EFFECTIVENESS/
-├── 01-exploration-code-approaches/
-│   ├── SKILL.md           ← Agent loads this
-│   └── resources/01-...html
-├── 02-exploration-visual-designs/
-│   ├── SKILL.md           ← Agent loads this
-│   └── resources/02-...html
-... (21 total skills)
-```
+Each skill folder has:
+- `SKILL.md` — Problem, gotchas, when to use (progressive disclosure)
+- `resources/{skillname}.html` — Working example (copy, adapt, learn)
 
-**In Claude Code:**
-- Open chat
-- Select "Agent" mode
-- Type `/skills` to see available skills
-- Ask about UI patterns, components, etc.
-- Skills activate automatically when relevant
+Metadata loads at startup. Full instructions load when agents decide they're relevant. Examples load on demand.
 
-### 3. Using individual skills
+## Attribution
 
-**Ask Claude Code directly:**
-```
-"Show me an example of a drag-to-reorder interaction" 
-→ Loads 08-prototype-interaction skill
-
-"How do I create a status report template?"
-→ Loads 11-status-report skill
-
-"Build a feature flag configuration form"
-→ Loads 19-editor-feature-flags skill
-```
-
-**Or specify the skill:**
-```
-/skill 07-prototype-animation
-Show me a task completion animation
-```
-
-## Skills by Category
-
-### Code & Architecture
-- **01-exploration-code-approaches** — Debounced search: inline useEffect vs custom hook vs library
-- **03-code-review-pr** — Risk-mapped PR review format with color-coded severity
-- **04-code-understanding** — Authentication flow walkthrough (5-layer call stack)
-
-### Design & Components
-- **05-design-system** — Canonical token reference (colors, typography, spacing, radius, shadows)
-- **06-component-variants** — Card component: 6 structural treatments (Flat, Outlined, Elevated, etc.)
-- **10-svg-illustrations** — Geometric spot illustrations with design consistency
-
-### Interactions & Animations
-- **07-prototype-animation** — Task completion animation (900ms sequence with easing curves)
-- **08-prototype-interaction** — Sidebar drag-to-reorder with visual feedback
-- **09-slide-deck** — Full-screen presentations with scroll-snap and dark mode
-
-### Documentation & Communication
-- **11-status-report** — Weekly engineering update with stat cards
-- **12-incident-report** — Blameless RCA post-mortem format
-- **16-implementation-plan** — Feature design doc with phased approach
-- **17-pr-writeup** — Detailed PR description template
-
-### Research & Education
-- **14-research-feature-explainer** — Sticky TOC educational content (rate limiting example)
-- **15-research-concept-explainer** — Interactive SVG demo (consistent hashing example)
-
-### Tools & Workflow
-- **13-flowchart-diagram** — SVG flowchart with clickable nodes
-- **18-editor-triage-board** — Issue triage UI with filters and bulk actions
-- **19-editor-feature-flags** — Feature flag configuration form
-- **20-editor-prompt-tuner** — LLM prompt optimization with live preview
-
-### Portfolio
-- **index** — Portfolio landing page with projects and categories
-
-## Project Structure
-
-```
-.
-├── README.md                          # This file
-├── .claude/
-│   └── SKILL/
-│       └── HTML-EFFECTIVENESS/
-│           ├── index.md               # Master index (quick lookup)
-│           ├── 01-exploration-code-approaches/
-│           │   ├── SKILL.md           # Skill metadata + instructions
-│           │   └── resources/
-│           │       └── 01-...html     # Working example
-│           ├── 02-exploration-visual-designs/
-│           │   ├── SKILL.md
-│           │   └── resources/02-...html
-│           ... (21 total skills)
-│           └── index/
-│               ├── SKILL.md
-│               └── resources/index.html
-```
-
-## Key Features
-
-✅ **Agent Skills compliant** — Follows official spec with YAML frontmatter and progressive disclosure  
-✅ **Working examples** — Every skill has a complete, interactive HTML file  
-✅ **Production-ready** — Real patterns from shipping products  
-✅ **Gotchas first** — Edge cases and tradeoffs documented upfront  
-✅ **Short & focused** — SKILL.md files stay \<500 lines, examples load on demand  
-✅ **Discoverable** — Master index helps agents/humans find the right skill quickly  
-
-## Getting Started
-
-Start with `.claude/SKILL/HTML-EFFECTIVENESS/index.md` for a quick overview of all 21 skills. Each skill folder contains:
-- `SKILL.md` — Problem, approach, and gotchas
-- `resources/{skillname}.html` — Working example you can copy from
-
-## Inspiration & Attribution
-
-This project is inspired by:
-- **[Thariq Shihireen's "HTML Effectiveness" concept](https://x.com/trq212/status/2052809885763747935?s=20)** — The original idea for curating effective HTML patterns
-- **[ThariqS/html-effectiveness repository](https://github.com/ThariqS/html-effectiveness.git)** — Reference implementation and pattern examples
-
-This version applies the Agent Skills framework to make patterns discoverable and usable by both humans and AI agents.
+**Thariq Shihireen** — "[HTML Effectiveness](https://x.com/trq212/status/2052809885763747935?s=20)" concept + 21 patterns  
+**This project** — Agent Skills framework + auto-discovery
 
 ## License
 
-MIT — Use these patterns freely in your projects.
-
-## Author
-
-Created by [@farhanrhine](https://github.com/farhanrhine)  
-Based on work by [@trq212](https://x.com/trq212)
+MIT
 
 ---
 
-**Last updated:** May 18, 2026  
-**Total skills:** 21  
-**Total resources:** 21 working HTML examples
+Created by [@farhanrhine](https://github.com/farhanrhine) · Based on [@trq212](https://x.com/trq212)'s work
+
