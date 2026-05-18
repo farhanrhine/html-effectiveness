@@ -95,59 +95,11 @@ open .claude/SKILL/HTML-EFFECTIVENESS/01-exploration-code-approaches/resources/0
 ✅ **Short & focused** — SKILL.md files stay \<500 lines, examples load on demand  
 ✅ **Discoverable** — Master index helps agents/humans find the right skill quickly  
 
-## Using a Skill
+## Getting Started
 
-### Step 1: Load the index
-```
-.claude/SKILL/HTML-EFFECTIVENESS/index.md
-```
-
-### Step 2: Find your pattern
-Scan the table or categories to find a relevant skill.
-
-### Step 3: Read the SKILL.md
-```
-.claude/SKILL/HTML-EFFECTIVENESS/{skillname}/SKILL.md
-```
-
-Contains:
-- **What** — What problem does this solve?
-- **Gotchas** — Non-obvious issues and edge cases
-- **When to use** — Decision framework
-- **Reference** — Link to full working example
-
-### Step 4: View the example (if needed)
-```
-.claude/SKILL/HTML-EFFECTIVENESS/{skillname}/resources/{skillname}.html
-```
-
-Complete, working implementation you can:
-- Copy code from
-- Adapt for your use case
-- Run in a browser
-
-## Design Principles
-
-1. **Show, don't tell** — Every pattern has a working example
-2. **Gotchas first** — Surprises and edge cases upfront
-3. **Progressive disclosure** — Metadata first, details on demand
-4. **One pattern per skill** — Focused, not bloated
-5. **Production patterns** — Real code from shipping products
-
-## How to Contribute
-
-1. Add a new skill folder with the same structure
-2. Write a focused `SKILL.md` (\<500 lines)
-3. Include a working `resources/{skillname}.html` example
-4. Update `.claude/SKILL/HTML-EFFECTIVENESS/index.md`
-5. Push to main
-
-## Spec & Standards
-
-- **Agent Skills spec** — https://agentskills.io/
-- **SKILL.md format** — YAML frontmatter + Markdown body
-- **Progressive disclosure** — Metadata ~100 tokens, instructions \<5000 tokens, resources on demand
-- **File structure** — `skillname/SKILL.md` + `skillname/resources/`
+Start with `.claude/SKILL/HTML-EFFECTIVENESS/index.md` for a quick overview of all 21 skills. Each skill folder contains:
+- `SKILL.md` — Problem, approach, and gotchas
+- `resources/{skillname}.html` — Working example you can copy from
 
 ## Inspiration & Attribution
 
