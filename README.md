@@ -28,6 +28,51 @@ cat .claude/SKILL/HTML-EFFECTIVENESS/index.md
 open .claude/SKILL/HTML-EFFECTIVENESS/01-exploration-code-approaches/resources/01-exploration-code-approaches.html
 ```
 
+## Using with Claude Code & Agents
+
+### 1. Clone to your workspace
+
+```bash
+git clone https://github.com/farhanrhine/html-effectiveness.git
+cd html-effectiveness
+```
+
+### 2. Reference in your agent/code
+
+The skills are now available at `.claude/SKILL/HTML-EFFECTIVENESS/`. Agents will automatically discover them via:
+
+**Method A: Direct file reference**
+```
+Load: .claude/SKILL/HTML-EFFECTIVENESS/index.md
+```
+
+**Method B: Per-skill usage**
+```
+Load: .claude/SKILL/HTML-EFFECTIVENESS/{skillname}/SKILL.md
+Example: .claude/SKILL/HTML-EFFECTIVENESS/01-exploration-code-approaches/resources/01-exploration-code-approaches.html
+```
+
+### 3. Agents automatically discover
+
+Any agent that reads `.claude/SKILL/` will:
+1. Find the `HTML-EFFECTIVENESS` domain
+2. Load `index.md` for quick discovery
+3. Load individual `SKILL.md` files on demand
+4. Reference working examples in `resources/`
+
+No additional setup needed—just clone and agents see your skills.
+
+### Example Use Cases
+
+**Claude Code building a form UI?**  
+→ Ask for `19-editor-feature-flags` skill
+
+**Documenting a feature?**  
+→ Ask for `16-implementation-plan` skill
+
+**Need animation reference?**  
+→ Ask for `07-prototype-animation` skill
+
 ## Skills by Category
 
 ### Code & Architecture
