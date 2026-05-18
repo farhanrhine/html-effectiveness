@@ -149,13 +149,22 @@ Complete, working implementation you can:
 - **Progressive disclosure** — Metadata ~100 tokens, instructions \<5000 tokens, resources on demand
 - **File structure** — `skillname/SKILL.md` + `skillname/resources/`
 
+## Inspiration & Attribution
+
+This project is inspired by:
+- **[Thariq Shihireen's "HTML Effectiveness" concept](https://x.com/trq212/status/2052809885763747935?s=20)** — The original idea for curating effective HTML patterns
+- **[ThariqS/html-effectiveness repository](https://github.com/ThariqS/html-effectiveness.git)** — Reference implementation and pattern examples
+
+This version applies the Agent Skills framework to make patterns discoverable and usable by both humans and AI agents.
+
 ## License
 
 MIT — Use these patterns freely in your projects.
 
 ## Author
 
-Created by [@farhanrhine](https://github.com/farhanrhine)
+Created by [@farhanrhine](https://github.com/farhanrhine)  
+Based on work by [@trq212](https://x.com/trq212)
 
 ---
 
