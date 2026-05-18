@@ -30,48 +30,71 @@ open .claude/SKILL/HTML-EFFECTIVENESS/01-exploration-code-approaches/resources/0
 
 ## Using with Claude Code & Agents
 
-### 1. Clone to your workspace
+### 1. Add skills to your project
 
+Copy the `HTML-EFFECTIVENESS` folder to one of these locations:
+
+**For Claude Code (project-level):**
 ```bash
-git clone https://github.com/farhanrhine/html-effectiveness.git
-cd html-effectiveness
+# Option A: Client-specific location
+cp -r HTML-EFFECTIVENESS ~/.claude/skills/
+
+# Option B: Cross-client convention (recommended)
+mkdir -p .agents/skills
+cp -r HTML-EFFECTIVENESS .agents/skills/
 ```
 
-### 2. Reference in your agent/code
+**For any agent (user-level):**
+```bash
+# Cross-client (recommended)
+cp -r HTML-EFFECTIVENESS ~/.agents/skills/
 
-The skills are now available at `.claude/SKILL/HTML-EFFECTIVENESS/`. Agents will automatically discover them via:
-
-**Method A: Direct file reference**
-```
-Load: .claude/SKILL/HTML-EFFECTIVENESS/index.md
-```
-
-**Method B: Per-skill usage**
-```
-Load: .claude/SKILL/HTML-EFFECTIVENESS/{skillname}/SKILL.md
-Example: .claude/SKILL/HTML-EFFECTIVENESS/01-exploration-code-approaches/resources/01-exploration-code-approaches.html
+# Or Claude-specific
+cp -r HTML-EFFECTIVENESS ~/.claude/skills/
 ```
 
-### 3. Agents automatically discover
+### 2. Agents auto-discover skills
 
-Any agent that reads `.claude/SKILL/` will:
-1. Find the `HTML-EFFECTIVENESS` domain
-2. Load `index.md` for quick discovery
-3. Load individual `SKILL.md` files on demand
-4. Reference working examples in `resources/`
+Once skills are placed in `.agents/skills/` or `.claude/skills/`, agents automatically discover them at startup:
 
-No additional setup needed—just clone and agents see your skills.
+**Discovery structure:**
+```
+.agents/skills/HTML-EFFECTIVENESS/
+├── 01-exploration-code-approaches/
+│   ├── SKILL.md           ← Agent loads this
+│   └── resources/01-...html
+├── 02-exploration-visual-designs/
+│   ├── SKILL.md           ← Agent loads this
+│   └── resources/02-...html
+... (21 total skills)
+```
 
-### Example Use Cases
+**In Claude Code:**
+- Open chat
+- Select "Agent" mode
+- Type `/skills` to see available skills
+- Ask about UI patterns, components, etc.
+- Skills activate automatically when relevant
 
-**Claude Code building a form UI?**  
-→ Ask for `19-editor-feature-flags` skill
+### 3. Using individual skills
 
-**Documenting a feature?**  
-→ Ask for `16-implementation-plan` skill
+**Ask Claude Code directly:**
+```
+"Show me an example of a drag-to-reorder interaction" 
+→ Loads 08-prototype-interaction skill
 
-**Need animation reference?**  
-→ Ask for `07-prototype-animation` skill
+"How do I create a status report template?"
+→ Loads 11-status-report skill
+
+"Build a feature flag configuration form"
+→ Loads 19-editor-feature-flags skill
+```
+
+**Or specify the skill:**
+```
+/skill 07-prototype-animation
+Show me a task completion animation
+```
 
 ## Skills by Category
 
